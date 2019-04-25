@@ -1,5 +1,5 @@
 {
-  "name": "node-boilerplate-with-db",
+  "name": "node-alexa-lampi-with-db",
   "version": "2.0.0",
   "description": "Simple Node + Express template application",
   "main": "src/app.js",
@@ -9,8 +9,8 @@
     "start:prod": "set APP_ENV=production& set APP_TESTING=false& pm2 start src/app.js",
     "start:devtest": "set APP_ENV=development& set APP_TESTING=true& pm2 start src/app.js",
     "start:prodtest": "set APP_ENV=production& set APP_TESTING=true& pm2 start src/app.js",
-    "test:dev": "set APP_ENV=development& set APP_TESTING=true& mysql -uimporter -pimporter boilerplate_testing < dbdump-testing.sql& mocha ./tests",
-    "test:prod": "set APP_ENV=production& set APP_TESTING=true& mysql -uimporter -pimporter boilerplate_testing < dbdump-testing.sql& mocha ./tests"
+    "test:dev": "set APP_ENV=development& set APP_TESTING=true& mysql -uimporter -pimporter alexa-lampi_testing < dbdump-testing.sql& mocha ./tests",
+    "test:prod": "set APP_ENV=production& set APP_TESTING=true& mysql -uimporter -pimporter alexa-lampi_testing < dbdump-testing.sql& mocha ./tests"
   },
   "author": "Aaron Magid",
   "dependencies": {

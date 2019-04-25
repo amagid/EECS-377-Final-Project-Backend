@@ -30,9 +30,9 @@ Import both of these files into MySQL, *and make sure they are imported into the
 files and paste it into a MySQL terminal session *that is using the correct databases at the time.*
 
 ```
-mysql -u root -p boilerplate < path/to/dbdump.sql
+mysql -u root -p alexa-lampi < path/to/dbdump.sql
 
-mysql -u root -p boilerplate_testing < path/to/dbdump-testing.sql
+mysql -u root -p alexa-lampi_testing < path/to/dbdump-testing.sql
 ```
 
 Congratulations! Your database should now be set up.
@@ -44,7 +44,7 @@ passwords or other sensitive information. Please create the following files and 
 
 - In the **config** directory, find the file named *development.json.sample*. Make two copies of this file. Name one copy *development.json* and the other *production.json*. These two files 
 control the configuration data for the application when in development and live production use, respectively. In each file, fill in the fields marked with angle brackets (<>). For the "db" 
-section, the username and password can be found in the *db-init.sql* file; use the information for the **boilerplate_server** user. **Please note that some external services, including the Google 
+section, the username and password can be found in the *db-init.sql* file; use the information for the **alexa-lampi_server** user. **Please note that some external services, including the Google 
 Maps API, may require that this server's IP address be whitelisted in their sprcific management console.**
 - In the **config/keys** directory, create two files: *jwt-public.key* and *jwt-private.key*. Generate an RSA key pair and save the public and private keys to these files, respectively.
 
