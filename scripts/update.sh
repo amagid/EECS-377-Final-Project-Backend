@@ -3,7 +3,7 @@ LIGHT_BLUE='\033[1;36m'
 YELLOW='\033[1;33m'
 GREEN='\033[1;32m'
 WHITE='\033[1;37m'
-BACKEND_GITHUB_REPO_NAME='node-alexa-lampi-with-db'
+BACKEND_GITHUB_REPO_NAME='node-alexa_lampi-with-db'
 FRONTEND_GITHUB_REPO_NAME=''
 FRONTEND_DIRECTORY='../frontend'
 clear
@@ -43,7 +43,7 @@ echo -e "${YELLOW}Code Updated!${WHITE}"
 # echo -e "${YELLOW}Importing New DB Files...${WHITE}"
 # mysql -uroot -p$db_password cti_panels < db-init.sql
 # mysql -uroot -p$db_password cti_panels < dbdump.sql
-# mysql -uimporter -pimporter alexa-lampi_testing < dbdump-testing.sql
+# mysql -uimporter -pimporter alexa_lampi_testing < dbdump-testing.sql
 # clear
 # echo -e "${YELLOW}DB Updated!${WHITE}"
 echo -e "${YELLOW}Installing Dependencies...${WHITE}"

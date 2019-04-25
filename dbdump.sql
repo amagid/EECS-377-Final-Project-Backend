@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
 --
--- Host: localhost    Database: alexa-lampi
+-- Host: localhost    Database: alexa_lampi
 -- ------------------------------------------------------
 -- Server version	5.7.25-0ubuntu0.16.04.2
 
