@@ -8,23 +8,18 @@ const db = require('./services/mysql');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const socketIO = require('socket.io');
 
-const startup = db.connect()
-    .then((connection) => {
-        return require('./models/sync')();
-    }).then(() => {
+const startup = Promise.resolve()
+    .then(() => {
         return setUpAPI();
     }).then(() => {
         return startServer();
     }).catch(err => {
-        console.log("ERROR ON STARTUP: ", JSON.stringify(err, null, 4));
+        console.log("ERROR ON STARTUP: ", err);
     });
 
 function startServer() {
     const server = http.Server(app);
-    //Set up SocketIO server for realtime services
-    const socketServer = socketIO(server);
 
     server.on('error', function(err) {
         //If the address is already in use
@@ -56,11 +51,10 @@ function startServer() {
     server.listen(process.env.PORT || config.app.port);
     logger.info({ message: `Server listening on port ${process.env.PORT || config.app.port}` });
 
-    return { server, socketServer };
+    return { server };
 }
 
 function setUpAPI() {
-    const decodeJWT = require('./middlewares/decode-jwt');
     const routes = require('./routes');
 
     //App settings
@@ -78,7 +72,6 @@ function setUpAPI() {
         type: 'application/octet-stream'
     }));
     app.use(cors());
-    app.use(decodeJWT);
     //Mount routes
     const router = express.Router();
     routes(router);
