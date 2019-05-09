@@ -2,7 +2,7 @@ const mqtt = require('mqtt');
 const logger = require('./logger');
 let client;
 
-const deviceId = 'b827eb966d';
+const deviceId = 'b827eb09466d';
 
 const lampiState = {
     color: {
@@ -32,15 +32,19 @@ function startServer() {
 
 function updateState(hue, saturation, brightness, on) {
     if (hue || hue === 0) {
+        console.log('setting hue to ' + hue);
         lampiState.color.h = hue;
     }
     if (saturation || saturation === 0) {
+        console.log('setting saturation to ' + saturation);
         lampiState.color.s = saturation;
     }
     if (on === true || on === false) {
+        console.log('setting on to ' + on);
         lampiState.on = on;
     }
     if (brightness || brightness === 0) {
+        console.log('setting brightness to ' + brightness);
         lampiState.brightness = brightness;
     }
 
@@ -48,7 +52,8 @@ function updateState(hue, saturation, brightness, on) {
 }
 
 function publishState() {
-    client.publish(`devices/${deviceId}/lamp/changed`, JSON.stringify(lampiState));
+    lampiState.client = 'alexa';
+    client.publish(`devices/${deviceId}/lamp/set_config`, JSON.stringify(lampiState));
 }
 
 module.exports = {
