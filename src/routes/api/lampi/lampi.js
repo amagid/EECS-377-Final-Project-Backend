@@ -7,5 +7,15 @@ module.exports = {
 };
 
 function setState(options) {
-    return mqtt.updateState(parseFloat(options.hue), parseFloat(options.saturation), parseFloat(options.brightness), JSON.parse(options.on));
+    return mqtt.updateState(parseFloat(options.hue), parseFloat(options.saturation), parseFloat(options.brightness), parseBoolean(options.on));
+}
+
+function parseBoolean(input) {
+    if (input === 'true' || input === true) {
+        return true;
+    } else if (input === 'false' || input === false) {
+        return false;
+    } else {
+        return null;
+    }
 }
