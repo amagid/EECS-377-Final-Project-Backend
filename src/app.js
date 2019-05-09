@@ -8,10 +8,13 @@ const db = require('./services/mysql');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const mqtt = require('./services/mqtt');
 
 const startup = Promise.resolve()
     .then(() => {
         return setUpAPI();
+    }).then(() => {
+        return mqtt.startServer();
     }).then(() => {
         return startServer();
     }).catch(err => {
