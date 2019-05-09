@@ -17,7 +17,7 @@ const handlers = {
         this.response.speak('Your Lampi is ready. What should I tell it to do?');
         this.emit(':responseReady');
     },
-    'BrightnessIntnet': function() {
+    'BrightnessIntent': function() {
         const brightness = this.event.request.intent.slots.brightness.value;
         request('GET', 'ec2-18-214-47-188.compute-1.amazonaws.com', `/api/lampi/set-state?brightness=${brightness}`, {})
             .then(() => {
@@ -82,6 +82,28 @@ const handlers = {
                 this.emit(':responseReady');
             });
     },
+    'BrightenIntent': function() {
+        request('GET', 'ec2-18-214-47-188.compute-1.amazonaws.com', '/api/lampi/set-state?brightness=100', {})
+            .then(() => {
+                return `Lampi brightened.`;
+            }).catch(err => {
+                return 'Command Failed. Please try again.';
+            }).then((speechText) => {
+                this.response.speak(speechText);
+                this.emit(':responseReady');
+            });
+    },
+    'DimIntent': function() {
+        request('GET', 'ec2-18-214-47-188.compute-1.amazonaws.com', '/api/lampi/set-state?brightness=25', {})
+            .then(() => {
+                return `Lampi dimmed.`;
+            }).catch(err => {
+                return 'Command Failed. Please try again.';
+            }).then((speechText) => {
+                this.response.speak(speechText);
+                this.emit(':responseReady');
+            });
+    },
     'MemeDetectiveIntent': function() {
         const speechText = `what, is this the murder weapon? Get off my dick!`;
         this.response.speak(speechText);
@@ -93,9 +115,15 @@ const handlers = {
         this.emit(':responseReady');
     },
     'MemeBanananaIntent': function() {
-        const speechText = `a bah nahnah nah next to a bah nahnah nah`;
-        this.response.speak(speechText);
-        this.emit(':responseReady');
+        request('GET', 'ec2-18-214-47-188.compute-1.amazonaws.com', '/api/lampi/set-state?hue=16&saturation=100&brightness=100&on=true', {})
+            .then(() => {
+                return `a bah nahnah nah next to a bah nahnah nah`;
+            }).catch(err => {
+                return 'Command Failed. Please try again.';
+            }).then((speechText) => {
+                this.response.speak(speechText);
+                this.emit(':responseReady');
+            });
     },
     'MemeLeftoversIntent': function() {
         const speechText = `who ate my brother's ass`;
