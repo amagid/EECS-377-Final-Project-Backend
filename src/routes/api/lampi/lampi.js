@@ -7,7 +7,7 @@ module.exports = {
 };
 
 function setState(options) {
-    return mqtt.updateState(parseFloat(options.hue), parseFloat(options.saturation), parseFloat(options.brightness), parseBoolean(options.on));
+    return mqtt.updateState(parseFloat(options.hue) / 100, parseFloat(options.saturation) / 100, parseFloat(options.brightness) / 100, parseBoolean(options.on));
 }
 
 function parseBoolean(input) {
